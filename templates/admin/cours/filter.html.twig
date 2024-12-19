@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Filtrer les Cours{% endblock %}
+
+{% block body %}
+    <h1>Filtrer les Cours</h1>
+
+    <form method="get" action="{{ path('admin_cours_filtered') }}">
+        <label for="niveau">Niveau :</label>
+        <select name="niveau" id="niveau">
+            <option value="">Choisir un niveau</option>
+            <option value="niveau_1">Niveau 1</option>
+            <option value="niveau_2">Niveau 2</option>
+        </select>
+        <label for="classe">Classe :</label>
+        <select name="classe" id="classe">
+            <option value="">Choisir une classe</option>
+            <option value="classe_a">Classe A</option>
+            <option value="classe_b">Classe B</option>
+        </select>
+        <label for="professeur">Professeur :</label>
+        <select name="professeur" id="professeur">
+            <option value="">Choisir un professeur</option>
+            <option value="prof_1">Professeur 1</option>
+            <option value="prof_2">Professeur 2</option>
+        </select>
+        <button type="submit">Filtrer</button>
+    </form>
+
+    <h2>Cours filtrés</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nom du Cours</th>
+                <th>Professeur</th>
+                <th>Module</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cours in cours %}
+                <tr>
+                    <td>{{ cours.nom }}</td>
+                    <td>{{ cours.professeurs|join(', ') }}</td>
+                    <td>{{ cours.module }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

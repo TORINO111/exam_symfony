@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Cours d'une Classe{% endblock %}
+
+{% block body %}
+    <h1>Liste des Cours pour la Classe {{ classe.nom }}</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nom du Cours</th>
+                <th>Professeur</th>
+                <th>Module</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cours in cours %}
+                <tr>
+                    <td>{{ cours.nom }}</td>
+                    <td>{{ cours.professeurs|join(', ') }}</td>
+                    <td>{{ cours.module }}</td>
+                    <td>
+                        <a href="{{ path('admin_cours_edit', {'id': cours.id}) }}">Modifier</a> |
+                        <a href="{{ path('admin_cours_delete', {'id': cours.id}) }}">Supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+    <a href="{{ path('admin_cours_create') }}">Créer un Nouveau Cours</a>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Niveaux{% endblock %}
+
+{% block body %}
+    <h1>Liste des Niveaux</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nom du Niveau</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for niveau in niveaux %}
+                <tr>
+                    <td>{{ niveau.nom }}</td>
+                    <td>
+                        <a href="{{ path('admin_niveau_edit', {'id': niveau.id}) }}">Modifier</a> |
+                        <a href="{{ path('admin_niveau_delete', {'id': niveau.id}) }}">Supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+    <a href="{{ path('admin_niveau_create') }}">Créer un Nouveau Niveau</a>
+{% endblock %}

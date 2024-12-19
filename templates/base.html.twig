@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Admin Panel{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Administration des Cours</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ path('admin_dashboard') }}">Tableau de bord</a></li>
+                <li><a href="{{ path('admin_courses') }}">Cours</a></li>
+                <li><a href="{{ path('admin_classes') }}">Classes</a></li>
+                <li><a href="{{ path('admin_professors') }}">Professeurs</a></li>
+                <li><a href="{{ path('admin_students') }}">Étudiants</a></li>
+                <li><a href="{{ path('logout') }}">Déconnexion</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block body %}{% endblock %}
+    </main>
+</body>
+</html>
